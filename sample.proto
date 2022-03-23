@@ -5,26 +5,30 @@ syntax = "proto3";
 // パッケージ定義(よしなに名付ける)
 package sample;
 
-// import
 // デフォルトで使えない型をインポートしたい時はインポートする
 import "google/protobuf/timestamp.proto";
 
-// サービスとRPCメソッド定義
+// サービスとサービスが持つメソッドを定義
 service FileStorage {
-    // ファイルのアップロード
-    // ファイルの中身・ファイルの拡張子を送る => ファイルを保存した日時とファイルのIDを返す。
+    // 書き方
+    // rpc メソッド名 (マイクロサービスに送るメッセージの型) returns (マイクロサービスが返すメッセージの型)
+
+    // ファイルのアップロード用メソッド
+    // ファイルの中身・ファイルの拡張子を送る => ファイルを保存した日時・ファイルのID・エラーを返す。
     rpc Upload (UploadRequest) returns (UploadResponse);
 
-    // ファイルのダウンロード
-    // ファイルのIDを送る => ファイルのバイナリ・拡張子を送る
+    // ファイルのダウンロード用メソッド
+    // ファイルのIDを送る => ファイルのバイナリ・拡張子・エラーを返す。
     rpc Download (DownloadRequest) returns (DownloadResponse);
 
-    // ※ストリーミングを使用する場合は メッセージの手前に stream とつけるだけで良い
+    // ※ 新たなメソッドを生やしたいときは上記rpcを増やしていけば良い。
+    // ※ ストリーミングを使用する場合は メッセージの手前に stream とつけるだけで良い
 }
 
 // メッセージ型
-// 型 フィールド名 フィールド番号 を指定する
-// フィールド番号はなんでも良いが基本連番で良い
+// `型 フィールド名 = フィールド番号;` と指定する
+// ※ フィールド番号はユニークであればなんでも良いが基本は連番で良い
+// ※ boolean や Enum や 配列も型として定義できる。
 message UplaodRequest {
     bytes file_body = 1;
     string file_type = 2;
@@ -54,4 +58,3 @@ enum ErrorType {
   VALIDATION_ERROR = 2;
 }
 
-// ※ boolean や 配列も型として定義できる。
