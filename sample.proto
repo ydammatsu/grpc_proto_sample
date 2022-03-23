@@ -50,8 +50,9 @@ message DownloadResponse {
 
 // Enum も設定できる。
 enum ErrorType {
-  UNKNOWN_ERROR = 0;
-  VALIDATION_ERROR = 1;
+  NO_ERROR = 0;
+  UNKNOWN_ERROR = 1;
+  VALIDATION_ERROR = 2;
 }
 
 // ※ boolean や 配列も型として定義できる。
