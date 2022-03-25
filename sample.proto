@@ -29,7 +29,7 @@ service FileStorage {
 // `型 フィールド名 = フィールド番号;` と指定する
 // ※ フィールド番号はユニークであればなんでも良いが基本は連番で良い
 // ※ boolean や Enum や 配列も型として定義できる。
-message UplaodRequest {
+message UploadRequest {
     bytes file_body = 1;
     string file_name = 2;
 }
