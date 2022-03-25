@@ -35,18 +35,16 @@ message UplaodRequest {
 }
 
 message UploadResponse {
-    string file_id = 1;
-    google.protobuf.Timestamp created_at = 2;
+    google.protobuf.Timestamp created_at = 1;
     ErrorType error = 3;
 }
 
 message DownloadRequest {
-  string file_id = 1;
+  string file_name = 1;
 }
 
 message DownloadResponse {
-  string file_name = 1;
-  bytes file_body = 2;
+  bytes file_body = 1;
   ErrorType error = 3;
 }
 
