@@ -30,7 +30,7 @@ service FileStorage {
 // ※ フィールド番号はユニークであればなんでも良いが基本は連番で良い
 // ※ boolean や Enum や 配列も型として定義できる。
 message UploadRequest {
-    bytes file_body = 1;
+    bytes file_blob = 1;
     string file_name = 2;
 }
 
@@ -44,7 +44,7 @@ message DownloadRequest {
 }
 
 message DownloadResponse {
-  bytes file_body = 1;
+  bytes file_blob = 1;
   ErrorType error = 3;
 }
 
