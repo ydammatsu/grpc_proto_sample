@@ -22,7 +22,8 @@ service FileStorage {
     rpc Download (DownloadRequest) returns (DownloadResponse);
 
     // ※ 新たなメソッドを生やしたいときは上記rpcを増やしていけば良い。
-    // ※ ストリーミングを使用する場合は メッセージの手前に stream とつけるだけで良い
+    // ※ ストリーミングを使用する場合は メッセージの手前に stream とつける
+    // rpc Upload (stream UploadRequest) returns (UploadResponse);
 }
 
 // メッセージ型
